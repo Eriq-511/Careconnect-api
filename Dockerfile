@@ -1,10 +1,10 @@
 # Use an official OpenJDK runtime as a parent image
 FROM eclipse-temurin:17-jdk-alpine as build
 WORKDIR /app
-COPY careconnect-api/pom.xml .
-COPY careconnect-api/.mvn .mvn
-COPY careconnect-api/mvnw .
-COPY careconnect-api/src ./src
+COPY pom.xml .
+COPY .mvn .mvn
+COPY mvnw .
+COPY src ./src
 RUN ./mvnw clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
