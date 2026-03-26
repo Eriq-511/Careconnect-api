@@ -1,3 +1,5 @@
+server:
+  port: ${PORT:10000}
 spring:
   profiles:
     active: prod
