@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: test
+  security:
+    user:
+      name: test
+      password: test
+  main:
+    allow-bean-definition-overriding: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+  security:
+    enabled: false
+  server:
+    port: 0
