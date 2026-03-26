@@ -50,7 +50,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOriginPattern("*");
+        String frontendUrl = System.getenv("FRONTEND_URL");
+        if (frontendUrl != null && !frontendUrl.isEmpty()) {
+            configuration.setAllowedOrigins(java.util.List.of(frontendUrl));
+        } else {
+            configuration.addAllowedOriginPattern("*"); // fallback for local/dev
+        }
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
